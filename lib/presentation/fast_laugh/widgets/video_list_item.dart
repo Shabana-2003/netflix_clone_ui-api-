@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_ui_app/core/colors/colors.dart';
 import 'package:netflix_ui_app/core/constants.dart';
 import 'package:netflix_ui_app/model/movies/movie/movie.dart';
 
@@ -7,13 +6,13 @@ import 'package:netflix_ui_app/model/movies/movie/movie.dart';
 class VideoListItem extends StatelessWidget {
   final int index;
   final Movie movie;
-  const VideoListItem({super.key, required this.index,required this.movie});
+  const VideoListItem({super.key, required this.index, required this.movie,});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-       Container(
+        Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
@@ -21,77 +20,86 @@ class VideoListItem extends StatelessWidget {
                     ),
                     fit: BoxFit.cover))),
         Align(
-          alignment: Alignment.center,
+          alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,vertical: 10
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-          
-                //left side
                 CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Colors.black.withOpacity(0.6),
-                  child: IconButton(onPressed: () {},
-                   icon: Icon(Icons.volume_off,
-                   color: kwhiteColor,
-                   size: 20,))),
-          
-                //right side
-          const  Column(
+                  radius: 27,
+                  backgroundColor: Colors.grey[700],
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.volume_off,
+                      size: 30,
+                      color: kwhite,
+                    ),
+                  ),
+                ),
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:[
+                  children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: EdgeInsets.symmetric(vertical: 20),
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(
-                            'https://www.themoviedb.org/t/p/w500_and_h282_face/ucFj56P5fXnutVG2HWyDTIQLwVX.jpg'),
+                            'https://wallpapers.com/images/hd/profile-picture-f67r1m9y562wdtin.jpg'),
                         radius: 29,
                       ),
                     ),
-                    VideoActionsWidget(icon: Icons.emoji_emotions, title:"LOL"),
-            
-                    VideoActionsWidget(icon: Icons.add, title: "My List"),
-           
-                    VideoActionsWidget(icon: Icons.share, title: "Share"),
-             
-                    VideoActionsWidget(icon: Icons.play_arrow, title: "Play",),
-           
+                    // kHeight20,
+                    VideoActionWidget(
+                        icon: Icons.emoji_emotions_sharp, title: 'LOL'),
+
+                    VideoActionWidget(icon: Icons.add, title: 'My List'),
+
+                    VideoActionWidget(
+                        icon: Icons.share_rounded, title: 'Share'),
+
+                    VideoActionWidget(icon: Icons.play_arrow, title: 'Play'),
                   ],
-                )  
+                )
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
 }
 
-class VideoActionsWidget extends StatelessWidget {
+class VideoActionWidget extends StatelessWidget {
   final IconData icon;
   final String title;
-  const VideoActionsWidget({super.key,required this.icon,required this.title});
+  const VideoActionWidget({super.key, required this.icon, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Column(
         children: [
-          Icon(icon,
-          color: Colors.white,
-          size: 30,
+          Icon(
+            icon,
+            color: kwhite,
+            size: 25,
+            
+            shadows: const [
+              Shadow(
+                  offset: Offset(
+                    0.90,
+                    0.70,
+                  ),
+                  blurRadius: 9.2)
+            ],
           ),
           Text(
-        title,
-          style: TextStyle(
-            color: kwhiteColor,
-            fontSize: 12,
-          ),)
+            title,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );

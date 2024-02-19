@@ -37,7 +37,7 @@ class ComingSoonWidget extends StatelessWidget {
               Text(
                 dayFormatter.format(DateTime.parse(movie.releaseDate!)),
                 style: const TextStyle(
-                    fontSize: 30,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 3),
               )
@@ -46,7 +46,7 @@ class ComingSoonWidget extends StatelessWidget {
         ),
         SizedBox(
           width: size.width - 50,
-          height: 500,
+          height: 600,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -76,14 +76,14 @@ class ComingSoonWidget extends StatelessWidget {
                         icon: Icons.alarm,
                         title: 'Remind me',
                         iconSize: 15,
-                        textSize: 12,
+                        textSize: 9,
                       ),
                       kwidth,
                       CustomButton(
                         icon: Icons.info,
                         title: 'Info',
                         iconSize: 15,
-                        textSize: 12,
+                        textSize: 9,
                       ),
                       kwidth
                     ],

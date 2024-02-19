@@ -22,11 +22,11 @@ class AppBarWidget extends StatelessWidget {
           size: 30,
         ),
         kwidth,
-        Container(
-          width: 30,
-          height: 30,
-          color: Colors.blue,
-        ),
+         Image.network(
+                                      'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSc0y4Qg5WfxMY1cP1n31iE38DMMuZQXnMxpj1pQ9me-6GRu64V',
+                                      width: 30,
+                                      height: 30,
+                                    ),
         kwidth,
       ],
     );

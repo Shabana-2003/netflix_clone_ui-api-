@@ -31,7 +31,7 @@ class NumberCard extends StatelessWidget {
           ],
         ),
         StrokeText(
-          text: "${index + 1}",
+          text: "${index}",
           textStyle: TextStyle(
               fontSize: 150,
               decoration: TextDecoration.none,

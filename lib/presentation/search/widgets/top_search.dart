@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui_app/core/constants.dart';
 import 'package:netflix_ui_app/model/movies/movie/movie.dart';
 
-
 class TopSearchItemTile extends StatelessWidget {
   const TopSearchItemTile({super.key, required this.movie});
   final Movie movie;
@@ -29,7 +28,7 @@ class TopSearchItemTile extends StatelessWidget {
           Expanded(
             child: Text(
               movie.title!,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ),
           const Icon(

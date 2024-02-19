@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_ui_app/controller/api/api.dart';
 import 'package:netflix_ui_app/core/constants.dart';
 import 'package:netflix_ui_app/presentation/new_and_hot/widgets/coming_soon.dart';
 import 'package:netflix_ui_app/presentation/new_and_hot/widgets/everyones_watching.dart';
-
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -19,18 +19,19 @@ class ScreenNewAndHot extends StatelessWidget {
             title: Text(
               'New & Hot',
               style: GoogleFonts.montserrat(
-                  fontSize: 30, fontWeight: FontWeight.bold, color: kwhite),
+                  fontSize: 20, fontWeight: FontWeight.bold, color: kwhite),
             ),
             actions: [
               const Icon(
                 Icons.cast,
                 color: Colors.white,
+                size: 30,
               ),
               kwidth,
-              Container(
+              Image.network(
+                'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSc0y4Qg5WfxMY1cP1n31iE38DMMuZQXnMxpj1pQ9me-6GRu64V',
                 width: 30,
                 height: 30,
-                color: Colors.blue,
               ),
               kwidth
             ],
@@ -65,34 +66,58 @@ class ScreenNewAndHot extends StatelessWidget {
   }
 
   Widget _buildComingSoon(BuildContext context) {
-    return ValueListenableBuilder(
-        valueListenable: upComingListNotifeir,
-        builder: (context, value, _) {
-          return ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              var data = value[index];
-              return ComingSoonWidget(
-                movie: data,
-              );
-            },
-          );
-        });
+  return FutureBuilder(
+    future: Api().forSearchDara(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      } else if (snapshot.hasError) {
+        return Center(
+          child: Text('Error: ${snapshot.error}'),
+        );
+      } else {
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            var data = snapshot.data![index];
+            return ComingSoonWidget(
+              movie: data,
+            );
+          },
+        );
+      }
+    },
+  );
+
+
   }
 
   _buildEveryoneWatching() {
-    return ValueListenableBuilder(
-        valueListenable: topRatedListNotifeir,
-        builder: (context, value, _) {
-          return ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              var data = value[index];
-              return EveryOnesWatchingWidget(
-                movie: data,
-              );
-            }
-                );
-        });
+   return FutureBuilder(
+    future: Api().forSearchDara(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      } else if (snapshot.hasError) {
+        return Center(
+          child: Text('Error: ${snapshot.error}'),
+        );
+      } else {
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            var data = snapshot.data![index];
+            return EveryOnesWatchingWidget(
+              movie: data,
+            );
+          },
+        );
+      }
+    },
+  );
   }
 }
