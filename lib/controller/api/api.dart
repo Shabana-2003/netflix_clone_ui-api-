@@ -10,6 +10,7 @@ import 'package:netflix_ui_app/model/movies/movie/movie.dart';
 class Api {
   static const _trendingUrl =
       "https://api.themoviedb.org/3/trending/movie/day?api_key=$apiKey";
+      
   Future<List<Movie>> getTrendingMovies() async {
     final response = await http.get(Uri.parse(_trendingUrl));
 
@@ -21,7 +22,7 @@ class Api {
     }
   }
 
-  Future<List<String?>> getDownloadImageUrls() async {
+  Future<List<String?>> getDownloadImageUrls() async {//dowload page
     final response = await http.get(Uri.parse(_trendingUrl));
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body)["results"] as List;
