@@ -7,11 +7,11 @@ class Api {
   static const _postUrl = "https://example.com/post"; // Example URL for POST request
 
   Future<void> postData(Map<String, dynamic> data) async {
+    
     final response = await http.post(
       Uri.parse(_postUrl),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-      
       },
       body: jsonEncode(data),
     );

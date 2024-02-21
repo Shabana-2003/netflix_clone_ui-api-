@@ -31,11 +31,11 @@ class NumberCard extends StatelessWidget {
           ],
         ),
         StrokeText(
-          text: "${index}",
-          textStyle: TextStyle(
+          text: "$index",
+          textStyle:const TextStyle(
               fontSize: 150,
               decoration: TextDecoration.none,
-              color: const Color.fromARGB(255, 0, 0, 0)),
+              color:  Color.fromARGB(255, 0, 0, 0)),
           strokeColor: const Color.fromARGB(255, 255, 255, 255),
           strokeWidth: 3,
         ),

@@ -1,9 +1,9 @@
 
 import 'dart:convert';
-// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:netflix_ui_app/core/constants.dart';
 import 'package:netflix_ui_app/model/movies/movie/movie.dart';
+
 
 
 //get api request
@@ -22,7 +22,7 @@ class Api {
     }
   }
 
-  Future<List<String?>> getDownloadImageUrls() async {//dowload page
+  Future<List<String?>> getDownloadImageUrls() async {
     final response = await http.get(Uri.parse(_trendingUrl));
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body)["results"] as List;
@@ -110,4 +110,6 @@ class Api {
      
     }
   }
+
+ 
 }

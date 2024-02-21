@@ -19,14 +19,16 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //common UI elements like app bars, floating action buttons, and bottom navigation bars.
       body: SafeArea(
-        child: ValueListenableBuilder(
+        child: ValueListenableBuilder( // rebuild ui        
             valueListenable: indexChangeNotifier,
             builder: (context, int index, _) {
               return _pages[index];
-            }),
+            }
+          ),
       ),
-      bottomNavigationBar:const BottomNavigationWidget(),
+      bottomNavigationBar: const BottomNavigationWidget(),
     );
   }
 }

@@ -10,7 +10,7 @@ class BottomNavigationWidget extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: indexChangeNotifier,
       builder: (context, int newIndex, _){
-      return BottomNavigationBar(
+      return BottomNavigationBar(//when bottom navigation bar click,that time rebuild valuelistanable builder
         currentIndex: newIndex,
         onTap: (index) {
           indexChangeNotifier.value = index;
@@ -32,9 +32,9 @@ class BottomNavigationWidget extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.download), label: 'Dowloads'),
       
-      ],
+        ],
       );
-  }
+    }
   );
   }
 }
