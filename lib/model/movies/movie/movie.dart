@@ -47,5 +47,5 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MovieToJson(this);
+  Map<String,dynamic> toJson() => _$MovieToJson(this);
 }

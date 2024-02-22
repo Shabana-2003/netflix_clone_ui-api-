@@ -39,7 +39,7 @@ TextStyle kHometitleText =
 
     const apiKey = "e96764378f792062b00a5add9e8bde55";
 
-    const imagePath = 'https://image.tmdb.org/t/p/w500';
+    const imagePath = 'https://image.tmdb.org/t/p/w500';//basic image path of tmdb
 
   //notifiers
 

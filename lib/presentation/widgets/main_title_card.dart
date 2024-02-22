@@ -10,7 +10,7 @@ class MainTitleCard extends StatelessWidget {
     required this.title, required this.listNotifier,
   });
   final String title;
-    final ValueNotifier<List<Movie>> listNotifier;
+  final ValueNotifier<List<Movie>> listNotifier;
 
 
   @override
@@ -24,12 +24,10 @@ class MainTitleCard extends StatelessWidget {
           maxHeight: 200,
           child: ValueListenableBuilder(
             valueListenable: listNotifier,
-            builder: (context, value, _) {
-              
-            
+            builder: (context, value, _) {   
            return ListView.builder(
                     itemCount: value.length,
-                    scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,//Below the title, a list of movies is displayed horizontally.
                     itemBuilder: (context, index) {
                       var data = value[index];
                       return MainCard(

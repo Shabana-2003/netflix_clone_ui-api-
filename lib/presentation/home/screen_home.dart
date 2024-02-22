@@ -13,14 +13,14 @@ int randomIndex = 0;
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
-  fetchDatas() async {
+  fetchDatas() async//it can perform operations that might take some time to complete (like fetching data from the internet) thats why use async
+   {
     trendingNowListNotifeir.value = await Api().getTrendingMovies();
     topRatedListNotifeir.value = await Api().getTopRated();
     upComingListNotifeir.value = await Api().getUpComing();
-    top10TvShowsInIndiaTodayListNotifeir.value =
-        await Api().getTop10TvShowsInIndiaToday();
-    final random = Random();
-    randomIndex = random.nextInt(10);
+    top10TvShowsInIndiaTodayListNotifeir.value = await Api().getTop10TvShowsInIndiaToday();
+    final random = Random();//thats why import math
+    randomIndex = random.nextInt(10);// 0 to 9
   }
 
   @override
@@ -31,7 +31,7 @@ class ScreenHome extends StatelessWidget {
             valueListenable: scrollNotifier,
             builder: (BuildContext context, index, _) {
               return NotificationListener<UserScrollNotification>(
-                onNotification: (notification) {
+                onNotification: (notification) {//for scroll direction
                   final ScrollDirection direction = notification.direction;
                   if (direction == ScrollDirection.reverse) {
                     scrollNotifier.value = false;
@@ -44,9 +44,11 @@ class ScreenHome extends StatelessWidget {
                   children: [
                     ListView(
                       children: [
-                        FutureBuilder(
-                          future: Api().getTrendingMovies(),
-                          builder: (context, snapshot) => snapshot.hasData
+                        FutureBuilder(//is used in Flutter to asynchronously fetch data from a 'Future' and then build the UI based on the state of that Future.
+                          future: Api().getTrendingMovies(),//home
+                          builder: (context, snapshot) => //callback function 
+                          snapshot.hasData
+                          // ternary operator 
                               ? BackgroundCard(
                                   image: snapshot.data![randomIndex].posterPath)
                               : const SizedBox(
@@ -60,7 +62,7 @@ class ScreenHome extends StatelessWidget {
                         ),
                         MainTitleCard(
                           title: ' Released in the past year',
-                          listNotifier: trendingNowListNotifeir,
+                          listNotifier: trendingNowListNotifeir,//same home 1
                         ),
                         kheight,
                         MainTitleCard(
@@ -68,7 +70,7 @@ class ScreenHome extends StatelessWidget {
                           listNotifier: topRatedListNotifeir,
                         ),
                         kheight,
-                        NumberTitleCard(),
+                        const NumberTitleCard(),
                         kheight,
                         MainTitleCard(
                           title: ' Tense Dramas',
@@ -82,7 +84,7 @@ class ScreenHome extends StatelessWidget {
                         kheight
                       ],
                     ),
-                    scrollNotifier.value == true
+                    scrollNotifier.value == true//when scroll, show appbar
                         ? AnimatedContainer(
                             duration: const Duration(microseconds: 1000),
                             width: double.infinity,

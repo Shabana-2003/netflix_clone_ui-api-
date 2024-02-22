@@ -21,14 +21,15 @@ class ScreenMainPage extends StatelessWidget {
     return Scaffold(
       //common UI elements like app bars, floating action buttons, and bottom navigation bars.
       body: SafeArea(
-        child: ValueListenableBuilder( // rebuild ui        
+        child: ValueListenableBuilder( // Rebuilds the UI whenever the indexChangeNotifier value changes.        
             valueListenable: indexChangeNotifier,
             builder: (context, int index, _) {
               return _pages[index];
             }
           ),
       ),
-      bottomNavigationBar: const BottomNavigationWidget(),
+      bottomNavigationBar: //Displays the bottom navigation bar at the bottom.
+      const BottomNavigationWidget(),
     );
   }
 }

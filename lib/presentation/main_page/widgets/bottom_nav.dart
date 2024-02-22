@@ -13,9 +13,9 @@ class BottomNavigationWidget extends StatelessWidget {
       return BottomNavigationBar(//when bottom navigation bar click,that time rebuild valuelistanable builder
         currentIndex: newIndex,
         onTap: (index) {
-          indexChangeNotifier.value = index;
+          indexChangeNotifier.value = index;//when tap,the  indexChangeNotifier value will change
         },
-        elevation: 0,
+        elevation: 0,// removes this shadow entirely
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
